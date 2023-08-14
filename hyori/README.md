@@ -1,27 +1,16 @@
-# React + TypeScript + Vite
+## 8. 14
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- 리액트 짱짱짱 초보 상태 ..
+- 컴포넌트 분리 해봄
+- props는 객체로 받는 구나!
+- 태그 속성에 변수를 넣으려면 이중 중괄호로 묶어야 하네?
 
-Currently, two official plugins are available:
+  - vue는 "" 안에 넣기, react는 {{}} 에 넣기
+  - vue는 props를 defineProps로 받기, react는 함수 매개변수로 받기
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<br>
 
-## Expanding the ESLint configuration
+- 리액트의 라이프사이클은 뷰보다 더 어려운 느낌인데 ..
+  - 컴포넌트 생명주기와 effect를 다르게 생각하라? 😓
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+( 그냥 낙서입니다 )
