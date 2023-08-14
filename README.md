@@ -1,25 +1,34 @@
-# React Playground Study
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## 스터디 목적
+## Getting Started
 
-> 해당 저장소는 완벽을 추구하지 않습니다.
-> 같이 학습하며 충돌 상황을 미리 경험해보는 것을 목적으로 합니다.
+First, run the development server:
 
-- 함께 학습하기!
-- 프로젝트를 대비하여 충돌 상황에 대한 두려움 없애기!
-- 공식문서를 중심으로 React에 대해 깊게 파고들기!
-- 프로젝트에 활용해볼 수 있는 깃허브의 여러 기능을 경험해보기!
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-## 스터디 멤버
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-준일팀
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-## 스터디 진행 방식
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-- 매일 데일리 스크럼에 관련 학습 및 트러블 상황 공유
-- 최소 1일 1커밋을 기준으로 지속적으로 레포 활성화
-- 방식은 자유! 같이 학습하고 두려움을 없애는 것을 목표
+## Learn More
 
-## 스터디 기간
+To learn more about Next.js, take a look at the following resources:
 
-- 1차 종료 기간은 팀 프로젝트 직전까지! (8월 말)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
