@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import './globals.css';
+import { Control } from './Control';
 
 export const metadata = {
   title: 'Next App Practice',
@@ -7,7 +8,9 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const res = await fetch('http://localhost:9999/topics');
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics`, {
+    cache: 'no-cache',
+  });
   const topics = await res.json();
 
   return (
@@ -26,17 +29,7 @@ export default async function RootLayout({ children }) {
           })}
         </ol>
         {children}
-        <ul>
-          <li>
-            <Link href='/create'>Create</Link>
-          </li>
-          <li>
-            <Link href='/update/1'>Update</Link>
-          </li>
-          <li>
-            <input type='button' value='delete' />
-          </li>
-        </ul>
+        <Control />
       </body>
     </html>
   );
