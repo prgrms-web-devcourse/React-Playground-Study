@@ -4,6 +4,10 @@
 
 @layer base {
   body {
-    @apply font-Pretendard box-border;
+    @apply box-border font-Pretendard;
+  }
+
+  input {
+    outline: none;
   }
 }
