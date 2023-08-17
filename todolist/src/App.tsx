@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { generateId } from '~/utils/common'
 
 type Todo = {
-  id: number
+  id: string
   content: string
 }
 
@@ -11,7 +12,8 @@ function App() {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setTodoList((prev) => [...prev, { id: todoList.length + 1, content: inputValue }])
+
+    setTodoList((prev) => [...prev, { id: generateId(), content: inputValue }])
     setInputValue('')
   }
 
