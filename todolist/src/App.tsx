@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { generateId } from '~/utils/common'
+import Button from '~/components/common/button'
 
 type Todo = {
   id: string
@@ -42,7 +43,7 @@ function App() {
       <form onSubmit={handleFormSubmit}>
         <input ref={inputRef} onChange={handleInputChange} value={inputValue} placeholder="할 일을 추가해주세요!" />
 
-        <button>추가</button>
+        <Button>추가</Button>
       </form>
 
       <ul>
@@ -50,9 +51,9 @@ function App() {
           <li key={id} className="flex gap-1">
             <p>{content}</p>
 
-            <button onClick={() => handleRemoveButtonClick({ id, content })}>
+            <Button onClick={() => handleRemoveButtonClick({ id, content })}>
               <span className="material-symbols-outlined">delete</span>
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
