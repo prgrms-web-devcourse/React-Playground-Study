@@ -16,7 +16,11 @@ function App() {
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
+    setInputValue(e.currentTarget.value)
+  }
+
+  const handleRemoveButtonClick = ({ id, content }: Todo) => {
+    confirm(`${content}\n정말 삭제하시겠습니까..?`) && setTodoList((todos) => todos.filter((todo) => todo.id !== id))
   }
 
   return (
@@ -33,7 +37,13 @@ function App() {
 
       <ul>
         {todoList.map(({ id, content }) => (
-          <li key={id}>{content}</li>
+          <li key={id} className="flex gap-1">
+            <p>{content}</p>
+
+            <button onClick={() => handleRemoveButtonClick({ id, content })}>
+              <span className="material-symbols-outlined">delete</span>
+            </button>
+          </li>
         ))}
       </ul>
     </div>
