@@ -1,11 +1,18 @@
 import { useState } from 'react'
 
+type Todo = {
+  id: number
+  content: string
+}
+
 function App() {
   const [inputValue, setInputValue] = useState('')
+  const [todoList, setTodoList] = useState<Todo[]>([])
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(inputValue)
+    setTodoList((prev) => [...prev, { id: todoList.length + 1, content: inputValue }])
+    setInputValue('')
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,8 +27,15 @@ function App() {
 
       <form onSubmit={handleFormSubmit}>
         <input onChange={handleInputChange} value={inputValue} placeholder="할 일을 추가해주세요!" />
+
         <button>추가</button>
       </form>
+
+      <ul>
+        {todoList.map(({ id, content }) => (
+          <li key={id}>{content}</li>
+        ))}
+      </ul>
     </div>
   )
 }
