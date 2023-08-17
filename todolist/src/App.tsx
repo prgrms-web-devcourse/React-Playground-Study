@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { generateId } from '~/utils/common'
 
 type Todo = {
@@ -10,11 +10,19 @@ function App() {
   const [inputValue, setInputValue] = useState('')
   const [todoList, setTodoList] = useState<Todo[]>([])
 
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!inputRef.current) {
+      return
+    }
+
     e.preventDefault()
 
     setTodoList((prev) => [...prev, { id: generateId(), content: inputValue }])
     setInputValue('')
+
+    inputRef.current.focus()
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +40,7 @@ function App() {
       </h1>
 
       <form onSubmit={handleFormSubmit}>
-        <input onChange={handleInputChange} value={inputValue} placeholder="할 일을 추가해주세요!" />
+        <input ref={inputRef} onChange={handleInputChange} value={inputValue} placeholder="할 일을 추가해주세요!" />
 
         <button>추가</button>
       </form>
