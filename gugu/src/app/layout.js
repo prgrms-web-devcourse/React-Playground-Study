@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import './globals.css';
 import { Control } from './Control';
+import useFetchTopics from '@/hooks/useFetchTopics';
 
 export const metadata = {
   title: 'Next App Practice',
@@ -8,16 +9,13 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics`, {
-    cache: 'no-cache',
-  });
-  const topics = await res.json();
+  const topics = await useFetchTopics();
 
   return (
-    <html lang='ko'>
+    <html lang="ko">
       <body>
         <h1>
-          <Link href='/'>WEB</Link>
+          <Link href="/">WEB</Link>
         </h1>
         <ol>
           {topics.map((topic) => {
