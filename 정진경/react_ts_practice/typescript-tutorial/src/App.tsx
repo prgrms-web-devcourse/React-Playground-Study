@@ -1,17 +1,26 @@
 import React, { useState } from 'react'
 import './App.css'
 import InputFeild from './components/InputFeild'
+import { Todo } from './model'
 
 const App: React.FC = () => {
   // 굳이 꼭 React.FC를 사용하지 않고 인자에 가각 타입을 지정해 주는 방법 사용가능하다.
   const [todo, setTodo] = useState<string>('') // 초기 상태 타입 지정
+  const [todos, setTodos] = useState<Todo[]>([])
 
-  console.log(todo)
+  const handleAdd = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (todo) {
+      setTodos([...todos, { id: Date.now(), todo, isDone: false }])
+      setTodo('')
+    }
+  }
+  console.log(todos)
 
   return (
     <div className='App'>
-      <span className='heading'>Taskify</span>
-      <InputFeild todo={todo} setTodo={setTodo} />
+      <span className='heading'>🖇️ TODO 🖍️</span>
+      <InputFeild todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
     </div>
   )
 }
