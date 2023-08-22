@@ -42,8 +42,9 @@
 
 # hydrateRoot
 
-- `hydrateRoot`를 사용하면 이전에 `[react-dom/server](https://react-ko.dev/reference/react-dom/server)`로 생성한 HTML 콘텐츠가 있는 브라우저 DOM 노드 내에 React 컴포넌트를 표시할 수 있습니다.
+- `hydrateRoot`를 사용하면 이전에 [react-dom/server](https://react-ko.dev/reference/react-dom/server)로 생성한 HTML 콘텐츠가 있는 브라우저 DOM 노드 내에 React 컴포넌트를 표시할 수 있습니다.
 - `hydrateRoot`를 호출하여 서버 환경에서 React가 이미 만들어둔 HTML에 React를 “붙입니다”.
+
   ```jsx
   import { hydrateRoot } from 'react-dom/client';
 
@@ -53,11 +54,13 @@
   // reactNode = 앞서 존재하는 HTML에 렌더링하기 위한 React노드
   const root = hydrateRoot(domNode, reactNode);
   ```
+
   ```jsx
   import { hydrateRoot } from 'react-dom/client';
 
   hydrateRoot(document.getElementById('root'), <App />);
   ```
+
   - 서버 HTML을 브라우저 DOM 노드에서 React 컴포넌트를 이용해 hydrate함, 프레임워크를 사용중이라면 프레임워크가 알아서 실행
 
 ### hydrate 과정
@@ -109,3 +112,13 @@ hydrateRoot(document.getElementById('root'), <App />);
 - 이전에 렌더링된 컴포넌트 상태와 이벤트 핸들러를 유지하여 사용자 경험을 최적화
 
 요약하면, React Hydration은 서버 사이드 렌더링된 HTML과 클라이언트 측 React 애플리케이션의 렌더링 결과를 조합하여 초기 로딩 속도와 사용자 경험을 최적화하는 프로세스를 말함
+
+# 참고 문서
+
+- [hydrateRoot](https://react-ko.dev/reference/react-dom/client/hydrateRoot)
+- [Next.js의 렌더링 과정 알아보기](https://www.howdy-mj.me/next/hydrate)
+- [How Next.js Works](https://nextjs.org/learn/foundations/how-nextjs-works/rendering)
+
+# 나아갈 키워드
+
+- server component
