@@ -10,9 +10,22 @@ type Props = {
 }
 
 const SingleTodo = ({ todo, todos, setTodos }: Props) => {
+  // 클릭한 todo id 받아서 todo에서 id 찾고, !todo.isDone 하자!
+  const handleDone = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+      )
+    )
+  }
   return (
     <form className='todos__single'>
-      <span className='todos__single--text'>{todo.todo}</span>
+      {todo.isDone ? (
+        <s className='todos__single--text'>{todo.todo}</s>
+      ) : (
+        <span className='todos__single--text'>{todo.todo}</span>
+      )}
+
       <div>
         <span className='icon'>
           <AiFillEdit />
@@ -21,7 +34,7 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
           <AiFillDelete />
         </span>
         <span className='icon'>
-          <MdDone />
+          <MdDone onClick={(e) => handleDone(todo.id)} />
         </span>
       </div>
     </form>

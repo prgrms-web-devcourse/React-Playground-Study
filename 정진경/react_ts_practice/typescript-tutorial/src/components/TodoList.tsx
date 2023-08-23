@@ -21,15 +21,6 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }: Props) => {
       ))}
     </div>
   )
-  // return (
-  //   <li>
-  //     {todos.map((todo: ) => (
-  //       <li id={todo.id} isDone={todo.isDone}>
-  //         todo.todo
-  //       </li>
-  //     ))}
-  //   </li>
-  // )
 }
 
 export default TodoList
