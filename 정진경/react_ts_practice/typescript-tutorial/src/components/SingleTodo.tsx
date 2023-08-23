@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Todo } from '../model'
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
@@ -10,7 +10,9 @@ type Props = {
 }
 
 const SingleTodo = ({ todo, todos, setTodos }: Props) => {
-  // 클릭한 todo id 받아서 todo에서 id 찾고, !todo.isDone 하자!
+  const [editMode, setEditMode] = useState<boolean>(false)
+  const [editTodo, setEditTodo] = useState<string>(todo.todo)
+
   const handleDone = (id: number) => {
     setTodos(
       todos.map((todo) =>
@@ -23,9 +25,23 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
+  const handleEdit = (e: React.FormEvent, id: number) => {
+    e.preventDefault()
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
+    )
+    setEditMode(!editMode)
+  }
+
   return (
-    <form className='todos__single'>
-      {todo.isDone ? (
+    <form className='todos__single' onSubmit={(e) => handleEdit(e, todo.id)}>
+      {editMode ? (
+        <input
+          value={editTodo}
+          onChange={(e) => setEditTodo(e.target.value)}
+          className='todo__single--test'
+        />
+      ) : todo.isDone ? (
         <s className='todos__single--text'>{todo.todo}</s>
       ) : (
         <span className='todos__single--text'>{todo.todo}</span>
@@ -33,7 +49,14 @@ const SingleTodo = ({ todo, todos, setTodos }: Props) => {
 
       <div>
         <span className='icon'>
-          <AiFillEdit />
+          <AiFillEdit
+            onClick={() => {
+              // isEditMode가 false이고 isDone이 false면
+              if (!editMode && !todo.isDone) {
+                setEditMode(!editMode)
+              }
+            }}
+          />
         </span>
         <span className='icon'>
           <AiFillDelete onClick={(e) => handleDelete(todo.id)} />
