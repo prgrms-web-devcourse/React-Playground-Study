@@ -45,12 +45,18 @@
   padding: 20px;
   margin-top: 15px;
   background: yellow;
+  box-sizing: border-box;
 }
 .todos__single--text {
+  width: 60%;
   flex: 1;
   padding: 5px;
   border: none;
   font-size: 20px;
+}
+
+.todos__single--text:focus {
+  outline: none;
 }
 
 .icon {
