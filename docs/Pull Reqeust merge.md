@@ -1,6 +1,6 @@
 # \***\*Github pull request merge 종류\*\***
 
-![pull request merge 종류](./imgs/merge/pull request merge 종류.png)
+![img](./imgs/merge/pull request merge 종류.png)
 
 Merge pull request를 할려고 할 때 위와 같은 3가지 선택이 있다.
 
@@ -16,7 +16,7 @@ Merge pull request를 할려고 할 때 위와 같은 3가지 선택이 있다.
 
 # Create a merge commit
 
-![create a merge commit](./imgs/merge/merge commit.png)
+![img](./imgs/merge/merge commit.png)
 
 - 하나의 브랜치와 다른 브랜치의 변경 이력 전체를 합치는 방법
 - commit a, b, c를 참조하는 새로운 commit 이력인 m이 생성되고 m을 통해 a + b + c가 main에 추가된다.
@@ -27,12 +27,12 @@ Merge pull request를 할려고 할 때 위와 같은 3가지 선택이 있다.
   - 커밋 히스토리가 복잡해질 수 있다.
   - 불필요한 머지 커밋이 계속 쌓일 수 있다.
 - main에 남는 commit ID가 merge한 branch의 commit ID와 같다.
-  ![main branch](./imgs/merge/main commit.png)
-  ![new branch](./imgs/merge/new-branch commit.png)
+  ![img](./imgs/merge/main commit.png)
+  ![img](./imgs/merge/new-branch commit.png)
 
 # Squash and merge
 
-![squash and merge](./imgs/merge/squash merge.png)
+![img](./imgs/merge/squash merge.png)
 
 - a, b, c commit을 합쳐서 새로운 commit을 만들고 main에 추가한다.
 - feature 브랜치의 commit history를 합쳐서 깔끔하게 만들기 위해 사용한다.
@@ -45,7 +45,7 @@ Merge pull request를 할려고 할 때 위와 같은 3가지 선택이 있다.
 
 # Rebase and merge
 
-![rebase and merge](./imgs/merge/merge rebase.png)
+![img](./imgs/merge/merge rebase.png)
 
 - 모든 commit들이 합쳐지지 않고 각각 main 브랜치에 추가된다.
   - 기존 커밋들이 새로운 커밋으로 만들어져서 추가되므로 commit ID가 다르다!
