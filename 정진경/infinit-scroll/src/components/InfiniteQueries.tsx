@@ -1,15 +1,8 @@
-import {
-  useInfiniteQuery,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { limits } from 'argon2'
 
-const queryClient = new QueryClient()
-
-function App() {
+const InfiniteQueries = () => {
   const getPosts = async () => {
     const response = await axios
       .get(
@@ -23,7 +16,6 @@ function App() {
       )
       .then((res) => res.data)
     console.log('getposts 확인', response)
-    return response
   }
 
   const InfiniteScrollComponent = () => {
@@ -38,26 +30,18 @@ function App() {
 
     return (
       <div>
-        <ul>
-          {data?.pages[0].map((page: any) => (
-            <li>{page.title}</li>
-          ))}
-        </ul>
-        {data && data.pages.length > 0 && (
-          <button onClick={() => fetchNextPage()}>페이지 불러오기</button>
-        )}
+        <button onClick={() => fetchNextPage()}>페이지 불러오기</button>
       </div>
     )
   }
 
+  getPosts()
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <div>
-        <h1>포스트 리스트 목록</h1>
-        <InfiniteScrollComponent />
-      </div>
-    </QueryClientProvider>
+    <div>
+      <h3>무한 스크롤</h3>
+    </div>
   )
 }
 
-export default App
+export default InfiniteQueries
