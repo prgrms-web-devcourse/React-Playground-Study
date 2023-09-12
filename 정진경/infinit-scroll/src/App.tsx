@@ -3,26 +3,24 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { limits } from 'argon2'
 
 const queryClient = new QueryClient()
 
 function App() {
-  const getPosts = async () => {
+  const getPosts = async ({ pageParam = 0 }) => {
+    console.log('fetch')
     const response = await axios
       .get(
         'https://kdt.frontend.4th.programmers.co.kr:5011/posts/channel/64f843de36f4f3110a635033',
         {
           params: {
             limit: 5,
-            offset: 0,
+            offset: pageParam * 5,
           },
         }
       )
       .then((res) => res.data)
-    console.log('getposts 확인', response)
     return response
   }
 
@@ -31,21 +29,28 @@ function App() {
       ['posts'],
       getPosts,
       {
-        getNextPageParam: (lastPage) => {},
+        getNextPageParam: (lastPage, allPages) => {
+          const currentPage = lastPage.pageParam + 1
+          if (allPages.some((page) => page.pageParam === currentPage)) {
+            return undefined
+          }
+          return currentPage
+        },
       }
     )
-    console.log('data 확인', data, hasNextPage)
+    console.log(data)
 
     return (
       <div>
         <ul>
-          {data?.pages[0].map((page: any) => (
+          {/* {data?.pages[0].map((page: any) => (
             <li>{page.title}</li>
-          ))}
+          ))} */}
+          {data?.pages.map((page: any) =>
+            page?.data.map((post: any) => <li key={post._id}>{post.title}</li>)
+          )}
         </ul>
-        {data && data.pages.length > 0 && (
-          <button onClick={() => fetchNextPage()}>페이지 불러오기</button>
-        )}
+        <button onClick={() => fetchNextPage()}>페이지 불러오기</button>
       </div>
     )
   }
