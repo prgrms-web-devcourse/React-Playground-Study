@@ -1,0 +1,33 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  z-index: 3;
+  border: 1px black;
+  background: white;
+  padding: 10px;
+}
+
+.close-button {
+  position: absolute; /* 여기서는 부모에 relative가 없기 때문에 viewport를 기준으로 한다.  */
+  right: 20px;
+  top: 15px;
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  margin-top: 40px;
+}
